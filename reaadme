@@ -4,3 +4,14 @@ then go the Hive external terminal
 
 copy file to docker containrer using a separate power shell
 docker cp filename namenode:filename
+
+docker cp array_data.csv namenode:array_data.csv
+# hdfs dfs -mkdir -p /data/openbeer/breweries
+# hdfs dfs -put breweries.csv /data/openbeer/breweries/breweries.csv
+2023-02-18 08:59:19,301 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+# hdfs dfs -ls /data/openbeer/breweries
+Found 1 items
+-rw-r--r--   3 root supergroup      25747 2023-02-18 08:59 /data/openbeer/breweries/breweries.csv
+# hdfs dfs -ls /data/openbeer/
+Found 1 items
+drwxr-xr-x   - root supergroup          0 2023-02-18 08:59 /data/openbeer/breweries
