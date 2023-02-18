@@ -1,0 +1,6 @@
+docker compose down
+docker compose up
+then go the Hive external terminal
+
+copy file to docker containrer using a separate power shell
+docker cp filename namenode:filename
