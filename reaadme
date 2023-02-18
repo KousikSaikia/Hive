@@ -15,3 +15,33 @@ Found 1 items
 # hdfs dfs -ls /data/openbeer/
 Found 1 items
 drwxr-xr-x   - root supergroup          0 2023-02-18 08:59 /data/openbeer/breweries
+
+hive> set hive.cli.print.header=true;
+hive> select * from employee;
+OK
+employee.emp_id employee.name   employee.skills
+101     Amit    ["HADOOP","HIVE","SPARK","BIG-DATA                                                                                                           "]
+102     Sumit   ["HIVE","OZZIE","HADOOP","SPARK","STORM"]
+103     Rohit   ["KAFKA","CASSANDRA","HBASE"]
+Time taken: 0.137 seconds, Fetched: 3 row(s)
+hive> select name, size(skills) from employee;
+OK
+name    _c1
+Amit    4
+Sumit   5
+Rohit   3
+Time taken: 1.609 seconds, Fetched: 3 row(s)
+hive> create external table if not exists employee_map_data(
+    > id int,
+    > name string,
+    > details map<string,string>
+    > )
+    > row format delimited
+    > fields terminated by ','
+    > collection items terminated by '|'
+    > map keys terminated by ':'
+    > stored as textfile
+    > location '/data/mapdata/';
+OK
+Time taken: 0.121 seconds
+hive> show tables
